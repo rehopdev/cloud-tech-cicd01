@@ -11,7 +11,8 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t container-test-app .
+      #- docker build -t container-test-app .
+      - docker build -t cloud-tech-container-app .
       - docker tag container-test-app:latest ${ECR_REPOSITORY}:latest
   post_build:
     commands:
@@ -22,7 +23,7 @@ phases:
       - |
         echo '[
           {
-            "name": "container-test-app",
+            "name": "cloud-tech-container-app",
             "imageUri": "'${ECR_REPOSITORY}':latest"
           }
         ]' > imagedefinitions.json
